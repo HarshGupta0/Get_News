@@ -48,6 +48,9 @@ class _HomeState extends State<Home> {
                       Expanded(
                         child: TextField(
                           controller: searchController,
+                          onSubmitted: (value){
+                            search=value=searchController.text;
+                          },
                           textInputAction: TextInputAction.go,//adding go or search many icon to phones keyboard
                           keyboardType: TextInputType.multiline,
                           minLines: 1, // Normal textInputField will be displayed
