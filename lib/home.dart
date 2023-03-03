@@ -21,6 +21,7 @@ class _HomeState extends State<Home> {
       ),
       body: Container(
         child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           child: Container(
             child: Column(
               children: [
@@ -127,7 +128,17 @@ class _HomeState extends State<Home> {
                     autoPlay: true,
                     enlargeCenterPage: true,
                   ),
-                )
+                ),
+                Container(
+                  child: ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                  itemCount: 3,
+                    shrinkWrap: true,
+                    itemBuilder:(context,index){
+                    return Container(child: Image.asset('images/lana.png'),);
+                    }
+                ),
+                ),
               ],
             ),
           ),
