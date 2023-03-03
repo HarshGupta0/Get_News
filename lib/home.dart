@@ -9,6 +9,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   TextEditingController searchController =new TextEditingController();
+  List<String> navBarIteam=["Top  news", "India","World ","Finnace","Health"];
   String search='';
   @override
   Widget build(BuildContext context) {
@@ -49,9 +50,12 @@ class _HomeState extends State<Home> {
                         child: TextField(
                           controller: searchController,
                           onSubmitted: (value){
-                            search=value=searchController.text;
+                           setState(() {
+                             search=value;
+                           });
                           },
-                          textInputAction: TextInputAction.go,//adding go or search many icon to phones keyboard
+        // onsubmittes isliye use krte hein taki textinputaction se input string value ko use kr sake serach k liye
+                          textInputAction: TextInputAction.search,//adding go or search many icon to phones keyboard
                           keyboardType: TextInputType.multiline,
                           minLines: 1, // Normal textInputField will be displayed
                           maxLines: 5, // When user presses enter it will adapt to it
