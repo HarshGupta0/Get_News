@@ -1,5 +1,6 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-
+import 'package:carousel_slider/carousel_controller.dart';
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -54,7 +55,7 @@ class _HomeState extends State<Home> {
                              search=value;
                            });
                           },
-        // onsubmittes isliye use krte hein taki textinputaction se input string value ko use kr sake serach k liye
+        // onsubmitted isliye use krte hein taki textinputaction se input string value ko use kr sake serach k liye
                           textInputAction: TextInputAction.search,//adding go or search many icon to phones keyboard
                           keyboardType: TextInputType.multiline,
                           minLines: 1, // Normal textInputField will be displayed
@@ -72,12 +73,18 @@ class _HomeState extends State<Home> {
                 // Text('$search'),
                 Container(
                   height: 60,
+                  //The ListView.builder constructor takes an IndexedWidgetBuilder,
+                  // which builds the children on demand. This constructor is appropriate for
+                  // list views with a large (or infinite) number of children because the builder
+                  // is called only for those children that are actually visible.
                   child: ListView.builder(
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
                     itemCount: navBarIteam.length,
                     itemBuilder:(context,index){
                       return InkWell(
+                        //basically inkwell responses krta hei touch ko and then unke according hum kuch
+                        //action krwa skte hein....
                         onTap: (){
                           print(navBarIteam[index]);
                         },
@@ -101,6 +108,26 @@ class _HomeState extends State<Home> {
                     },
                   ),
                 ),
+                CarouselSlider(
+                  items: items.map((item){
+                    return Builder(
+                        builder:(BuildContext context){
+                          return InkWell(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: item,
+                              ),
+                            ),
+                          );
+                        }
+                    );
+                  }).toList(),
+                  options: CarouselOptions(
+                    height: 180,
+                    autoPlay: true,
+                    enlargeCenterPage: true,
+                  ),
+                )
               ],
             ),
           ),
@@ -108,4 +135,5 @@ class _HomeState extends State<Home> {
       ),
     );
   }
+  final List items=[Colors.red,Colors.pink,Colors.purple,Colors.orange];
 }
