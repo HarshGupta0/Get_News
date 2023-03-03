@@ -25,7 +25,7 @@ class _HomeState extends State<Home> {
               children: [
                 Container(
                   padding: EdgeInsets.only(left: 10),
-                  margin: EdgeInsets.all(30),
+                  margin: EdgeInsets.only(right: 30,left: 30,top:20,bottom: 15),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(35),
                     color: Colors.blue
@@ -69,7 +69,38 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                 ),
-                Text('$search'),
+                // Text('$search'),
+                Container(
+                  height: 60,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: navBarIteam.length,
+                    itemBuilder:(context,index){
+                      return InkWell(
+                        onTap: (){
+                          print(navBarIteam[index]);
+                        },
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                          padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.blue.shade400,
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Center(
+                            child: Text(navBarIteam[index],
+                            style: TextStyle(color:Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                            ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
               ],
             ),
           ),
