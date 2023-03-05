@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_controller.dart';
+
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -130,77 +130,127 @@ class _HomeState extends State<Home> {
                     },
                   ),
                 ),
-                CarouselSlider(
-                  items: items.map((item) {
-                    return Builder(builder: (BuildContext context) {
-                      return InkWell(
-                        onTap: () {},
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: item,
-                          ),
-                        ),
-                      );
-                    });
-                  }).toList(),
-                  options: CarouselOptions(
-                    height: 180,
-                    autoPlay: true,
-                    enlargeCenterPage: true,
-                  ),
-                ),
                 Container(
-                  child: ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: 3,
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
+                  margin: EdgeInsets.symmetric(vertical: 8,horizontal: 8),
+                  child: CarouselSlider(
+                    items: items.map((item) {
+                      return Builder(builder: (BuildContext context) {
                         return Container(
-                          color: Colors.green,
                           child: Card(
-                            elevation: 1.0,
-                            margin: EdgeInsets.all(20),
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15)),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                             child: Stack(
                               children: [
-                                //cliprrect used for styling the images
-                                ClipRRect(
-                                  child: Image.asset('images/lana.png'),
-                                  borderRadius: BorderRadius.circular(15),
+                                ClipRRect(child: Image.asset('images/lana1.jpg',fit: BoxFit.fitHeight,height: double.infinity,),
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
                                 Positioned(
-                                  // left: 50,
-                                  right: 0,
-                                  bottom: 0,
-                                  child: Container(
+                                    left: 0,
+                                    right: 0,
+                                    bottom: 0,
+                                    child: Container(
+                                      padding: EdgeInsets.all(6),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(10),bottomLeft: Radius.circular(10)),
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            Colors.purple.shade200.withOpacity(.8),
+                                            Colors.orange.shade300.withOpacity(.8),
 
-                                    decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        colors: [
-                                          Colors.purple.shade200,
-                                          Colors.orange.shade300,
-
-                                        ],
-                                        // begin: Alignment.topCenter,
-                                        // end: Alignment.bottomCenter,
+                                          ],
+                                          // begin: Alignment.topCenter,
+                                          // end: Alignment.bottomCenter,
+                                        ),
                                       ),
-                                    ),
-                                    padding: EdgeInsets.all(4),
-                                    child: Text(
-                                      'Breaking News',
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                ),
+                                  child: Text('News headline idhar hein',style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                                ))
                               ],
                             ),
                           ),
                         );
-                      }),
+                      });
+                    }).toList(),
+                    options: CarouselOptions(
+                      height: 180,
+                      autoPlay: true,
+                      enlargeCenterPage: true,
+                    ),
+                  ),
+                ),
+                Container(
+                  child: Column(
+                    children: [
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text('LATEST NEWS',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 25),),
+                          ],
+                        ),
+                        margin: EdgeInsets.only(left: 15,top: 15),
+                      ),
+                      ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: 3,
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              color: Colors.grey.shade200,
+                              child: Card(
+                                elevation: 1.0,
+                                margin: EdgeInsets.all(20),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15)),
+                                child: Stack(
+                                  children: [
+                                    //cliprrect used for styling the images
+                                    ClipRRect(
+                                      child: Image.asset('images/lana1.jpg'),
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    Positioned(
+                                      // left: 50,
+                                      right: 0,
+                                      bottom: 0,
+                                      child: Container(
+
+                                        decoration: BoxDecoration(
+                                          gradient: LinearGradient(
+                                            colors: [
+                                              Colors.purple.shade200,
+                                              Colors.orange.shade300,
+
+                                            ],
+                                            // begin: Alignment.topCenter,
+                                            // end: Alignment.bottomCenter,
+                                          ),
+                                        ),
+                                        padding: EdgeInsets.all(4),
+                                        child: Text(
+                                          'Breaking News',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }),
+                      Container(
+                        margin: EdgeInsets.all(10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                          ElevatedButton(onPressed: (){}, child:Text(' SHOW MORE'))
+                        ],),
+                      )
+                    ],
+                  ),
                 ),
               ],
             ),
