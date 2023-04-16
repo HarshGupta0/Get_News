@@ -142,7 +142,7 @@ class _HomeState extends State<Home> {
                             ),
                             child: Stack(
                               children: [
-                                ClipRRect(child: Image.asset('images/lana1.jpg',fit: BoxFit.fitHeight,height: double.infinity,),
+                                ClipRRect(child: Image.asset('images/lana1.jpg',fit: BoxFit.cover,height: double.infinity,),
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 Positioned(
@@ -150,6 +150,7 @@ class _HomeState extends State<Home> {
                                     right: 0,
                                     bottom: 0,
                                     child: Container(
+                                      width: double.infinity,
                                       padding: EdgeInsets.all(6),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.only(bottomRight: Radius.circular(10),bottomLeft: Radius.circular(10)),
@@ -206,15 +207,14 @@ class _HomeState extends State<Home> {
                                   children: [
                                     //cliprrect used for styling the images
                                     ClipRRect(
-                                      child: Image.asset('images/lana1.jpg'),
+                                      child: Image.asset('images/lana1.jpg',fit: BoxFit.cover,width: double.infinity,),
                                       borderRadius: BorderRadius.circular(15),
                                     ),
                                     Positioned(
-                                      // left: 50,
+                                      left: 0,
                                       right: 0,
                                       bottom: 0,
                                       child: Container(
-
                                         decoration: BoxDecoration(
                                           gradient: LinearGradient(
                                             colors: [
@@ -227,12 +227,14 @@ class _HomeState extends State<Home> {
                                           ),
                                         ),
                                         padding: EdgeInsets.all(4),
-                                        child: Text(
-                                          'Breaking News',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold),
+                                        child: Center(
+                                          child: Text(
+                                            'Breaking News',
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold),
+                                          ),
                                         ),
                                       ),
                                     ),
